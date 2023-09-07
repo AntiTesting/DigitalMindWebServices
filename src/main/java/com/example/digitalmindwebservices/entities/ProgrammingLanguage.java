@@ -1,11 +1,13 @@
 package com.example.digitalmindwebservices.entities;
 
+import com.example.digitalmindwebservices.entities.cross.ProgrammingLanguageDigitalProfile;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "programming_languages")
@@ -27,8 +29,6 @@ public class ProgrammingLanguage {
     @Column(name = "description", nullable = false, length = 500)
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "digital_profile_id", nullable = false)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private DigitalProfile digitalProfile;
+    @OneToMany(mappedBy = "programmingLanguage", cascade = CascadeType.ALL)
+    private List<ProgrammingLanguageDigitalProfile> programmingLanguageDigitalProfiles;
 }

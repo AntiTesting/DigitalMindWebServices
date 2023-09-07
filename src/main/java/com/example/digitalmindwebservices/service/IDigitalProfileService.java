@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface IDigitalProfileService extends CrudService<DigitalProfile> {
 
     Optional<DigitalProfile> findDigitalProfileByDeveloperId(Long id) throws Exception;
+    List<Long> filterDigitalProfile(String filterDatabase, String filterFramework, String filterProgrammingLanguage) throws Exception;
 }
