@@ -1,6 +1,7 @@
 package com.example.digitalmindwebservices.entities;
 
 import com.example.digitalmindwebservices.entities.cross.DatabaseDigitalProfile;
+import com.example.digitalmindwebservices.entities.cross.FrameworkDigitalProfile;
 import com.example.digitalmindwebservices.entities.cross.ProgrammingLanguageDigitalProfile;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
@@ -35,4 +36,7 @@ public class DigitalProfile implements Serializable {
 
     @OneToMany(mappedBy = "digitalProfile", cascade = CascadeType.ALL)
     private List<ProgrammingLanguageDigitalProfile> programmingLanguagesDigitalProfile;
+
+    @OneToMany(mappedBy = "digitalProfile", cascade = CascadeType.ALL)
+    private List<FrameworkDigitalProfile> frameworksDigitalProfile;
 }
