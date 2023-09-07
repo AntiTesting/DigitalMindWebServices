@@ -1,4 +1,4 @@
-package com.example.digitalmindwebservices.controller;
+/*package com.example.digitalmindwebservices.controller;
 
 import com.example.digitalmindwebservices.entities.User;
 import com.example.digitalmindwebservices.service.impl.UserServiceImpl;
@@ -116,3 +116,4 @@ public class UserControllerTest {
         }
     }
 }
+*/

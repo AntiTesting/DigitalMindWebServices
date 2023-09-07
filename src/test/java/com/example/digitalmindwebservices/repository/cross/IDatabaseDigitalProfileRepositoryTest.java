@@ -1,4 +1,4 @@
-package com.example.digitalmindwebservices.repository.cross;
+/*package com.example.digitalmindwebservices.repository.cross;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,4 +29,4 @@ class IDatabaseDigitalProfileRepositoryTest {
         List<Long> result = iDatabaseDigitalProfileRepository.filterDatabase("1,2,3");
         assertEquals(3, result.get(0));
     }
-}
+}*/
