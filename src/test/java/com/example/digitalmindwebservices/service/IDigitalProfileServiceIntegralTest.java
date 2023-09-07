@@ -1,4 +1,4 @@
-/*package com.example.digitalmindwebservices.service;
+package com.example.digitalmindwebservices.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,4 +26,3 @@ class IDigitalProfileServiceIntegralTest {
     }
 }
 
-*/
