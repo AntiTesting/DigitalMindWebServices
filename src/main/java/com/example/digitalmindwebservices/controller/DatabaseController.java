@@ -63,28 +63,21 @@ public class DatabaseController {
         }
     }
 
-//    @PostMapping( value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ApiOperation(value = "Create Database", notes = "Method for create a new Database")
-//    @ApiResponses({
-//            @ApiResponse(code = 201, message = "Database created"),
-//            @ApiResponse(code = 400, message = "Invalid Request"),
-//            @ApiResponse(code = 501, message = "Internal Server Error")
-//    })
-//    public ResponseEntity<Database> insertDatabase(@PathVariable("id")Long digitalProfileId, @Valid @RequestBody Database database){
-//        try {
-//            Optional<DigitalProfile> digitalProfile = digitalProfileService.getById(digitalProfileId);
-//            if (!digitalProfile.isPresent()){
-//                return new ResponseEntity<>(HttpStatus.FAILED_DEPENDENCY);
-//            }
-//            else {
-//                database.setDigitalProfile(digitalProfile.get());
-//                Database newDatabase = databaseService.save(database);
-//                return ResponseEntity.status(HttpStatus.CREATED).body(newDatabase);
-//            }
-//        } catch (Exception e) {
-//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Create Database", notes = "Method for create a new Database")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "Database created"),
+            @ApiResponse(code = 400, message = "Invalid Request"),
+            @ApiResponse(code = 501, message = "Internal Server Error")
+    })
+    public ResponseEntity<Database> insertDatabase(@Valid @RequestBody Database database){
+        try {
+            Database newDatabase = databaseService.save(database);
+            return ResponseEntity.status(HttpStatus.CREATED).body(newDatabase);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Update Database", notes = "Method for update a Database")
