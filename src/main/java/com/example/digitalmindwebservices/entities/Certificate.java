@@ -23,8 +23,8 @@ public class Certificate implements Serializable {
     private String title;
     @Column(name = "description", nullable = false, length = 250)
     private String description;
-    @Column(name ="icon_url", nullable = false, length = 250)
-    private String iconUrl;
+    @Column(name ="certificate_url", nullable = false, length = 250)
+    private String certificateurl;
     @Column(name = "obtained_at", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date obtainedDate;

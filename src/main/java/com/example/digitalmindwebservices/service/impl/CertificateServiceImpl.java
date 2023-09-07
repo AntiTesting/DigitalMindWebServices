@@ -6,6 +6,7 @@ import com.example.digitalmindwebservices.service.ICertificateService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,9 +42,30 @@ public class CertificateServiceImpl implements ICertificateService {
         return certificateRepository.findById(id);
     }
 
+
     @Override
     public List<Certificate> findByEducationId(Long id) throws Exception {
-        return certificateRepository.findByEducationId(id);
+        //return certificateRepository.findByEducationId(id);
+
+        List<Certificate> certificates = certificateRepository.findByEducationId(id);
+
+        List<Certificate> validCertificates = new ArrayList<>();
+        for (Certificate certificate : certificates) {
+            if (isValidCertificateUrl(certificate.getCertificateurl())) {
+                validCertificates.add(certificate);
+            } else {
+                throw new Exception("Certificado inválido para ID: " + certificate.getId());
+            }
+        }
+
+        return validCertificates;
     }
+
+    private boolean isValidCertificateUrl(String certificateUrl) {
+        return certificateUrl != null && !certificateUrl.isEmpty();
+    }
+
+
+
 }
 
