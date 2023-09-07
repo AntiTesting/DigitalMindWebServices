@@ -1,10 +1,14 @@
 package com.example.digitalmindwebservices.repository.cross;
 
+import com.example.digitalmindwebservices.entities.cross.DatabaseDigitalProfile;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface IDatabaseDigitalProfileRepository {
+@Repository
+public interface IDatabaseDigitalProfileRepository extends JpaRepository<DatabaseDigitalProfile, Long> {
     @Query(value = """
         SELECT digital_profile_id FROM (
             SELECT DISTINCT digital_profile_id, databases_id FROM databases_digital_profiles

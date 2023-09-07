@@ -1,10 +1,12 @@
 package com.example.digitalmindwebservices.repository.cross;
 
+import com.example.digitalmindwebservices.entities.cross.FrameworkDigitalProfile;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface IFrameworkDigitalProfileRepository {
+public interface IFrameworkDigitalProfileRepository extends JpaRepository<FrameworkDigitalProfile, Long> {
     @Query(value = """
         SELECT digital_profile_id FROM (
             SELECT DISTINCT digital_profile_id, frameworks_id FROM frameworks_digital_profiles

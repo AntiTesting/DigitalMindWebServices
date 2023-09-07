@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class DatabaseDigitalProfile {
     @Id
     @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "digital_profile_id", nullable = false)
