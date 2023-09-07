@@ -29,9 +29,6 @@ public class Database {
     @Column(name = "description", nullable = false, length = 500)
     private String description;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private DatabaseDigitalProfile databaseDigitalProfile;
-
     @OneToMany(mappedBy = "database")
     private List<DatabaseDigitalProfile> databaseDigitalProfiles;
 }
