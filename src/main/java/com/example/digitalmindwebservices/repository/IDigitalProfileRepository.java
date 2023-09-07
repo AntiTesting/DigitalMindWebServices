@@ -10,5 +10,4 @@ import java.util.Optional;
 @Repository
 public interface IDigitalProfileRepository extends JpaRepository<DigitalProfile,Long> {
     Optional<DigitalProfile> findDigitalProfileByDeveloperId(Long id);
-    List<DigitalProfile> findAllByIdIsWithin(Long id);
 }
