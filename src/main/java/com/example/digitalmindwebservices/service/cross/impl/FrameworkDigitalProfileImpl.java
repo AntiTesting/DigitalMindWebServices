@@ -19,6 +19,7 @@ public class FrameworkDigitalProfileImpl implements IFrameworkDigitalProfileServ
     }
 
     @Override
+    @Transactional
     public FrameworkDigitalProfile save(FrameworkDigitalProfile frameworkDigitalProfile) throws Exception {
         return frameworkDigitalProfileRepository.save(frameworkDigitalProfile);
     }

@@ -20,6 +20,7 @@ public class ProgrammingLanguageDigitalProfileImpl implements IProgrammingLangua
     }
 
     @Override
+    @Transactional
     public ProgrammingLanguageDigitalProfile save(ProgrammingLanguageDigitalProfile programmingLanguageDigitalProfile) throws Exception {
         return programmingLanguageDigitalProfileRepository.save(programmingLanguageDigitalProfile);
     }

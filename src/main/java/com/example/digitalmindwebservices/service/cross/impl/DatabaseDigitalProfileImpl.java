@@ -20,6 +20,7 @@ public class DatabaseDigitalProfileImpl implements IDatabaseDigitalProfileServic
     }
 
     @Override
+    @Transactional
     public DatabaseDigitalProfile save(DatabaseDigitalProfile databaseDigitalProfile) throws Exception {
         return databaseDigitalProfileRepository.save(databaseDigitalProfile);
     }

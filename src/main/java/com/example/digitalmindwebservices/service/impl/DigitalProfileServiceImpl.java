@@ -1,5 +1,6 @@
 package com.example.digitalmindwebservices.service.impl;
 
+import com.example.digitalmindwebservices.entities.Developer;
 import com.example.digitalmindwebservices.entities.DigitalProfile;
 import com.example.digitalmindwebservices.repository.IDigitalProfileRepository;
 import com.example.digitalmindwebservices.service.IDigitalProfileService;
@@ -20,7 +21,6 @@ public class DigitalProfileServiceImpl implements IDigitalProfileService {
     private final IDatabaseDigitalProfileService databaseDigitalProfileService;
     private final IFrameworkDigitalProfileService frameworkDigitalProfileService;
     private final IProgrammingLanguageDigitalProfileService programmingLanguageDigitalProfileService;
-
     private final IDigitalProfileRepository digitalProfileRepository;
 
     public DigitalProfileServiceImpl(IDigitalProfileRepository digitalProfileRepository, IDatabaseDigitalProfileService databaseDigitalProfileService, IFrameworkDigitalProfileService frameworkDigitalProfileService, IProgrammingLanguageDigitalProfileService programmingLanguageDigitalProfileService) {
@@ -85,5 +85,11 @@ public class DigitalProfileServiceImpl implements IDigitalProfileService {
             return List.copyOf(intersection);
         }
         return List.of();
+    }
+
+    @Override
+    public Optional<Developer> getDeveloperByDigitalProfileId(Long id) throws Exception {
+        Optional<Developer> developer = digitalProfileRepository.findById(id).map(DigitalProfile::getDeveloper);
+        return developer;
     }
 }
