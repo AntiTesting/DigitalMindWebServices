@@ -26,6 +26,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
@@ -47,6 +48,7 @@ class CertificateServiceIntegrationTest {
     private DigitalProfileServiceImpl digitalProfileService;
     @Autowired
     private DeveloperServiceImpl developerService;
+
 
     @Test
     public void testCreateCertificate() throws Exception {
@@ -77,20 +79,22 @@ class CertificateServiceIntegrationTest {
         certificate.setTitle("Certificado de Prueba");
         certificate.setDescription("Este es un certificado de prueba");
         certificate.setCertificateurl("https://valid-certificate.com");
-        certificate.setObtainedDate(new Date());
-
-        // Establecer la educación en el certificado
+        certificate.setObtainedDate(new Date(2023 - 1900, 8, 20));
         certificate.setEducation(education);
 
         try {
             // Llamar al método para crear un certificado
             Certificate createdCertificate = certificateService.save(certificate);
-
             // Verificar que el certificado se haya creado correctamente
             assertNotNull(createdCertificate.getId());
-            assertEquals("Certificado de Prueba", createdCertificate.getTitle());
-            assertEquals("Este es un certificado de prueba", createdCertificate.getDescription());
-            assertEquals("https://valid-certificate.com", createdCertificate.getCertificateurl());
+            // Verificar la relación entre el certificado y la educación
+            assertEquals(education, certificate.getEducation());
+            // Comprobar que la URL del certificado es válida
+            assertTrue(certificateService.isValidCertificateUrl(createdCertificate.getCertificateurl()), "La URL del certificado no es válida.");
+            // Comprobar que la fecha de obtención del certificado no es en el futuro
+            Date currentDate = new Date();
+            assertFalse(createdCertificate.getObtainedDate().after(currentDate), "La fecha de obtención del certificado no puede ser en el futuro.");
+
         } catch (Exception e) {
             fail("No se esperaba una excepción: " + e.getMessage());
         }

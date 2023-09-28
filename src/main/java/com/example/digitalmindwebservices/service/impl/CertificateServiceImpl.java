@@ -61,7 +61,7 @@ public class CertificateServiceImpl implements ICertificateService {
         return validCertificates;
     }
 
-    private boolean isValidCertificateUrl(String certificateUrl) {
+    public boolean isValidCertificateUrl(String certificateUrl) {
         return certificateUrl != null && !certificateUrl.isEmpty();
     }
 
