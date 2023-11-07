@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:16.0-alpine3.18
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: digitalminddb
+    networks:
+      - digitalmind
+    restart: always
+
+  web-services:
+    container_name: web-services
+    image: web-services
+    ports:
+      - 8080:8080
+    networks:
+      - digitalmind
+    depends_on:
+      - postgres
+    restart: always
+     
+#Se crea una red automaticamente para que los contenedores se puedan comunicar entre ellos
+networks:
+  digitalmind:
+    name: digitalmind
+    
