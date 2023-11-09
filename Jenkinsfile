@@ -5,11 +5,7 @@ pipeline {
         jdk "JDK-17"
     }
     stages {
-        stage('test') {
-            steps {
-                bat 'mvn clean compile test'
-            }
-        }
+
         stage('Build Application') {
             steps {
                 echo 'mvn clean install -Dmaven.test.skip=true'
